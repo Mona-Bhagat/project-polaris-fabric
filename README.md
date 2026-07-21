@@ -1,4 +1,4 @@
-# project-polaris-fabric
+
 # Project Polaris
 
 Project Polaris is an end-to-end enterprise analytics platform built on Microsoft Fabric for NimbusFlow, a fictional SaaS workflow automation company.
