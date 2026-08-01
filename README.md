@@ -37,7 +37,8 @@ Project Polaris was designed to provide a trusted analytical platform for answer
 
 The platform follows a medallion architecture:
 
-![Project Polaris Architecture](architecture/project-polaris-architecture png)
+<img width="1205" height="562" alt="project-polaris-architecture png" src="https://github.com/user-attachments/assets/1a7374f3-c1fa-41ec-bad1-2e34abdc1af3" />
+
 
 
 
