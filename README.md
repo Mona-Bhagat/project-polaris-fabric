@@ -83,14 +83,14 @@ Product Usage Analytics
 Customer Health and Churn Risk
 
 
-Key Engineering Decisions
+##  Engineering Decisions
 Why a Lakehouse?
 
-The Lakehouse supports raw files, scalable Spark transformations and Delta tables within a single Fabric data platform.
+ The Lakehouse supports raw files, scalable Spark transformations and Delta tables within a single Fabric data platform.
 
-Why Bronze, Silver and Gold?
+ -- Why Bronze, Silver and Gold?
 
-The separation preserves source data, centralises cleaning and validation, and provides stable business-ready datasets for reporting.
+ The separation preserves source data, centralises cleaning and validation, and provides stable business-ready datasets for reporting.
 
 Why PySpark?
 
