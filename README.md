@@ -1,34 +1,46 @@
-# Fabric Notebooks
+# Project Polaris
 
-This folder contains the Microsoft Fabric notebooks used in Project Polaris.
+## Enterprise Analytics Platform on Microsoft Fabric
 
-## Execution order
+Project Polaris is an end-to-end analytics engineering case study built using Microsoft Fabric for **NimbusFlow**, a fictional SaaS workflow automation company.
 
-1. `nb_bronze_to_silver.ipynb`
-   - Reads raw CSV files from the Bronze layer
-   - Standardises data types and descriptive attributes
-   - Removes duplicate customer records
-   - Validates relationships and business rules
-   - Writes Silver Delta tables
-   - Appends data-quality results to the audit log
+The platform combines subscription revenue, customer data and product-usage activity into a governed analytical solution using OneLake, Lakehouse architecture, Delta tables, PySpark notebooks, Data Factory pipelines, Direct Lake and Power BI.
 
-2. `nb_silver_to_gold.ipynb`
-   - Converts subscription history into customer-month MRR snapshots
-   - Calculates new, expansion, contraction and churned MRR
-   - Produces the monthly MRR bridge and executive summary tables
+All data used in this project is synthetic. The project contains no employer, customer or production data.
 
-3. `nb_gold_product_usage.ipynb`
-   - Aggregates daily product usage to customer-month level
-   - Calculates credit utilisation and usage trends
-   - Combines product engagement with MRR
-   - Produces an explainable customer-health classification
+---
 
-4. `nb_date_table.ipynb`
-   - Creates reusable daily and monthly date dimensions
+## Business Scenario
 
-## Platform
+NimbusFlow provides workflow automation and API integration services through monthly subscription plans.
 
-The notebooks were developed and executed using Microsoft Fabric Spark
-and write curated outputs as Delta tables in a Fabric Lakehouse.
+Its data is distributed across separate operational domains:
+
+- Customer and account information
+- Subscription billing
+- Product usage
+- Plan and pricing information
+
+This creates inconsistent definitions of recurring revenue, customer growth, churn and product adoption.
+
+Project Polaris was designed to provide a trusted analytical platform for answering questions such as:
+
+- How is monthly recurring revenue changing?
+- What is driving MRR growth or contraction?
+- Which customers are using the platform most heavily?
+- Which customers are showing signs of disengagement?
+- How much recurring revenue is associated with at-risk customers?
+
+---
+
+## Solution Architecture
+
+![Project Polaris Architecture](architecture/project-polaris-architecture.png)
+
+The platform follows a medallion architecture:
+
+
+        ↓
+Power BI Reports
 
 All data used in this project is synthetic 
