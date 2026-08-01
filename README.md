@@ -35,9 +35,11 @@ Project Polaris was designed to provide a trusted analytical platform for answer
 
 ## Solution Architecture
 
-![Project Polaris Architecture](architecture/project-polaris-architecture.png)
-
 The platform follows a medallion architecture:
+
+![Project Polaris Architecture](architecture/project-polaris-architecture png)
+
+
 
 
         ↓
