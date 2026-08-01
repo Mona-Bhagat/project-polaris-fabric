@@ -84,25 +84,25 @@ Customer Health and Churn Risk
 
 
 ##  Engineering Decisions
-Why a Lakehouse?
+ - Why a Lakehouse?
 
- The Lakehouse supports raw files, scalable Spark transformations and Delta tables within a single Fabric data platform.
+   The Lakehouse supports raw files, scalable Spark transformations and Delta tables within a single Fabric data platform.
 
- -- Why Bronze, Silver and Gold?
+ - Why Bronze, Silver and Gold?
 
- The separation preserves source data, centralises cleaning and validation, and provides stable business-ready datasets for reporting.
+   The separation preserves source data, centralises cleaning and validation, and provides stable business-ready datasets for reporting.
 
-Why PySpark?
+ - Why PySpark?
 
-PySpark was used for repeatable transformations across more than 349,000 daily usage events and for implementing relationship and business-rule validations.
+  PySpark was used for repeatable transformations across more than 349,000 daily usage events and for implementing relationship and business-rule validations.
 
-Why Direct Lake?
+ - Why Direct Lake?
 
-Direct Lake allows Power BI to query OneLake Delta tables through a shared semantic model without importing another copy of the data into the report.
+  Direct Lake allows Power BI to query OneLake Delta tables through a shared semantic model without importing another copy of the data into the report.
 
-Why customer-month snapshots?
+ - Why customer-month snapshots?
 
-Recurring-revenue movements depend on comparing each customer's current MRR with the previous month. The customer-month grain provides a reusable basis for MRR bridging, churn analysis and customer-health reporting.
+  Recurring-revenue movements depend on comparing each customer's current MRR with the previous month. The customer-month grain provides a reusable basis for MRR bridging, churn analysis and customer-health reporting.
 
 
 
