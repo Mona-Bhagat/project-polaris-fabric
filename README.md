@@ -58,6 +58,9 @@ Technology Stack
 
 A Python data generator was developed to create realistic synthetic SaaS data with historical customer behaviour.
 
+  Source: https://github.com/Mona-Bhagat/project-polaris-fabric/blob/42ea994ae35cbe25e2161b04977f2ea6757e0aaa/scripts/generate_source_data.py
+  
+
 
 ## Data Quality Monitoring
 
