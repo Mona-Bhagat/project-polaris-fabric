@@ -5,34 +5,117 @@
 
 Project Polaris is an end-to-end enterprise analytics platform designed and built on Microsoft Fabric for NimbusFlow, a fictional SaaS workflow automation company.
 
-The platform combines subscription revenue, customer data and product-usage activity into a governed analytical solution using OneLake, Lakehouse architecture, Delta tables, PySpark notebooks, Data Factory pipelines, Direct Lake and Power BI.
+The project was structured as a full analytics-platform engagement rather than a standalone dashboard build. It covers solution architecture, synthetic source-system design, data ingestion, medallion-layer transformations, data-quality controls, business modelling, pipeline orchestration, semantic modelling and executive reporting.
 
-All data used in this project is synthetic. The project contains no employer, customer or production data.
+All datasets are synthetic and were created exclusively for this project. No employer, customer or production data was used.
+
+---
+
+## Data Generation
+
+A Python data generator was developed to create realistic synthetic SaaS data with historical customer behaviour.
+
+## Engagement Overview
+
+NimbusFlow required a unified analytics platform to support executive reporting across subscription revenue, product usage and customer health.
+
+Operational data was assumed to be distributed across separate CRM, billing and product platforms, with inconsistent KPI definitions and no shared analytical layer.
+
+Project Polaris was designed as a platform-modernisation engagement covering:
+
+- Business requirements and KPI definition
+- Source-system and data-model design
+- Microsoft Fabric solution architecture
+- Bronze, Silver and Gold data processing
+- Data-quality monitoring and auditability
+- Revenue and customer-health modelling
+- Pipeline orchestration
+- Direct Lake semantic modelling
+- Power BI reporting
+  
 
 ---
 
-## Business Scenario
+## Client Problem
 
-NimbusFlow provides workflow automation and API integration services through monthly subscription plans.
+NimbusFlow lacked a trusted, shared view of its customer and subscription lifecycle.
 
-Its data is distributed across separate operational domains:
+Key challenges included:
 
-- Customer and account information
-- Subscription billing
-- Product usage
-- Plan and pricing information
+- Revenue metrics calculated independently by different teams
+- No reconciled monthly MRR bridge
+- Limited visibility of upgrades, downgrades and churn
+- Product-usage data disconnected from commercial reporting
+- No consistent method for identifying disengaged customers
+- No operational record of data-quality issues
+- Manual dependency management between transformation stages
 
-This creates inconsistent definitions of recurring revenue, customer growth, churn and product adoption.
+## Engagement Objectives
 
-Project Polaris was designed to provide a trusted analytical platform for answering questions such as:
+The platform was designed to achieve five objectives:
 
-- How is monthly recurring revenue changing?
-- What is driving MRR growth or contraction?
-- Which customers are using the platform most heavily?
-- Which customers are showing signs of disengagement?
-- How much recurring revenue is associated with at-risk customers?
+1. Establish a governed analytical foundation in Microsoft Fabric
+2. Create trusted definitions for MRR, ARR, churn and customer growth
+3. Combine commercial and product-usage data at customer-month grain
+4. Introduce reusable data-quality and audit controls
+5. Deliver executive and operational reporting through a shared semantic model
 
----
+## Scope of Delivery
+
+### Architecture
+- End-to-end Microsoft Fabric solution design
+- OneLake and Lakehouse structure
+- Medallion architecture
+- Notebook and pipeline dependency design
+- Direct Lake reporting architecture
+
+### Data Engineering
+- Synthetic source-data generator
+- Bronze file ingestion
+- Silver cleansing and standardisation
+- Referential-integrity validation
+- Business-rule validation
+- Gold analytical modelling
+
+### Data Quality and Controls
+- Row-count reconciliation
+- Duplicate detection
+- Missing-value monitoring
+- Foreign-key validation
+- Business-rule testing
+- Append-only audit history
+
+### Business Modelling
+- Customer-month MRR snapshots
+- New, expansion, contraction and churned MRR
+- ARR and revenue-retention metrics
+- Monthly product-usage aggregation
+- Credit-utilisation analysis
+- Explainable customer-health classification
+
+### Reporting
+- Executive SaaS performance dashboard
+- Product-usage dashboard
+- Customer-health and churn-risk dashboard
+
+
+### Delivery Approach
+
+Project Polaris was developed using an engagement-style delivery approach.
+
+The work progressed through the following stages:
+
+1. Define the business scenario and decision-making requirements
+2. Design source systems and synthetic business data
+3. Establish the target Fabric architecture
+4. Build the Bronze, Silver and Gold layers
+5. Introduce data-quality and audit controls
+6. Reconcile key business metrics
+7. Orchestrate notebook execution through pipelines
+8. Build the shared semantic model
+9. Deliver executive and operational reporting
+10. Document architectural decisions and lessons learned
+
 
 ## Solution Architecture
 
@@ -63,23 +146,49 @@ The platform follows a medallion architecture:
  - GitHub
  - Visual Studio Code
 
-## Data Generation
-
-A Python data generator was developed to create realistic synthetic SaaS data with historical customer behaviour.
-  
-
 ## Data Quality Monitoring
 
 The Bronze-to-Silver notebook writes operational metrics into notebook slv_data_quality_log
 
 Possible statuses are: PASS, PASS_WITH_WARNINGS, FAIL. The table is append-only, allowing data-quality results to be reviewed across multiple pipeline executions
 
-## Pipeline Orchestration
 
-The Fabric Data Factory pipeline executes the notebooks in dependency order:
+## Key Design Decisions
 
-Downstream notebooks run only after the preceding activity succeeds.
-This prevents Gold analytical tables from being refreshed when an upstream transformation fails.
+### One Lakehouse rather than separate Bronze, Silver and Gold Lakehouses
+
+A single Lakehouse was used for the development environment. Raw source extracts are preserved under the Files section, while Silver and Gold outputs are stored as Delta tables.
+
+This reduces unnecessary copying and keeps the platform manageable for the project scale.
+
+### Customer-month as the core analytical grain
+
+Recurring-revenue movement depends on comparing each customer's current and previous monthly state.
+
+The customer-month grain therefore supports:
+
+- MRR bridging
+- Churn analysis
+- Usage trends
+- Customer health
+- Revenue-at-risk reporting
+
+### Transparent health scoring rather than machine learning
+
+The health framework uses explicit rules for no usage, usage decline, low activity and MRR contraction.
+
+This makes the result explainable to business users and avoids presenting synthetic modelling as predictive machine learning.
+
+### Audit logging before dashboard development
+
+Data-quality monitoring was implemented before the reporting layer so that transformation outputs could be validated and tracked over time.
+
+### Churn event separated from inactive state
+
+A customer is classified as `Churned` only in the month where MRR is lost. Later months are classified as `Inactive`.
+
+This prevents historically churned customers from being incorrectly shown as healthy.
+
 
 ## Power BI Reports
 
@@ -115,18 +224,35 @@ The Direct Lake semantic model supports three connected analytical pages.
 
 
 
+# Known Constraints and Future Roadmap
 
-## Lessons Learned
+## Current Constraints
 
-This project reinforced several practical lessons:
+The current implementation uses manually uploaded synthetic source files and a development-only Fabric environment.
 
-- Successful pipeline execution does not guarantee trusted data.
-- Data-quality results should be recorded alongside transformation outputs.
-- Subscription status and subscription history must be modelled separately from current customer status.
-- Churn is an event, while inactivity is an ongoing state.
-- Gold tables should represent business concepts rather than copies of source-system tables.
-- Direct Lake separates semantic-model development from thin-report development.
-- Visual validation can reveal business-logic defects that technical validation may not detect.
+The solution does not currently include:
+
+- Automated external source ingestion
+- Dev/Test/Prod deployment pipelines
+- Row-level security
+- CI/CD integration
+- Production alerting
+- Capacity monitoring
+- Incremental source ingestion
+
+## Production Roadmap
+
+A production implementation would extend the platform with:
+
+- Automated API and database ingestion
+- Parameterised pipelines
+- Incremental and watermark-based loading
+- Dev/Test/Prod workspace separation
+- Deployment pipelines
+- Security roles and access controls
+- Failure notifications
+- Capacity and performance monitoring
+- Formal data contracts and ownership
 
 
 
