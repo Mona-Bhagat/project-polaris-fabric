@@ -76,11 +76,11 @@ This prevents Gold analytical tables from being refreshed when an upstream trans
 
 The Direct Lake semantic model supports three connected analytical pages.
 
-Executive SaaS Performance
+ - Executive SaaS Performance
 
-Product Usage Analytics
+ - Product Usage Analytics
 
-Customer Health and Churn Risk
+ - Customer Health and Churn Risk
 
 
 ##  Engineering Decisions
