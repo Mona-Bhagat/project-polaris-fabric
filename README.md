@@ -39,7 +39,15 @@ The platform follows a medallion architecture:
 
 <img width="1205" height="562" alt="project-polaris-architecture png" src="https://github.com/user-attachments/assets/1a7374f3-c1fa-41ec-bad1-2e34abdc1af3" />
 
-Technology Stack
+## Medallion Architecture
+
+Bronze - Raw CSV extracts are stored in the Lakehouse Files section without transformation. The Bronze layer preserves source fidelity and provides a replayable ingestion point.
+
+Silver - Fabric PySpark notebooks clean and validate the source data before writing curated Delta tables.
+
+Gold - The Gold layer converts operational entities into business-ready analytical models.
+
+## Technology Stack
  - Microsoft Fabric
  - OneLake
  - Fabric Lakehouse
@@ -57,10 +65,7 @@ Technology Stack
 ## Data Generation
 
 A Python data generator was developed to create realistic synthetic SaaS data with historical customer behaviour.
-
-  Source: https://github.com/Mona-Bhagat/project-polaris-fabric/blob/42ea994ae35cbe25e2161b04977f2ea6757e0aaa/scripts/generate_source_data.py
   
-
 
 ## Data Quality Monitoring
 
