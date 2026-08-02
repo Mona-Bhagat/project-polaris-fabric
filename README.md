@@ -41,11 +41,11 @@ The platform follows a medallion architecture:
 
 ## Medallion Architecture
 
-Bronze - Raw CSV extracts are stored in the Lakehouse Files section without transformation. The Bronze layer preserves source fidelity and provides a replayable ingestion point.
+ - Bronze - Raw CSV extracts are stored in the Lakehouse Files section without transformation. The Bronze layer preserves source fidelity and provides a replayable ingestion point.
 
-Silver - Fabric PySpark notebooks clean and validate the source data before writing curated Delta tables.
+ - Silver - Fabric PySpark notebooks clean and validate the source data before writing curated Delta tables.
 
-Gold - The Gold layer converts operational entities into business-ready analytical models.
+ - Gold - The Gold layer converts operational entities into business-ready analytical models.
 
 ## Technology Stack
  - Microsoft Fabric
