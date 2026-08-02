@@ -10,10 +10,42 @@ usage insights.
 
 ![Executive Summary](01-executive-summary.png)
 
+Focuses on:
+
+ - Closing MRR
+ - ARR
+ - Active customers
+ - New and churned MRR
+ - Gross MRR churn
+ - Net revenue retention
+ - Monthly revenue movement
+
+
 ### 2. Customer Health
 
 ![Customer Health](02-customer-health.png)
 
+Focuses on:
+
+ - Healthy, Watch and At-Risk customers
+ - MRR at risk
+ - Usage decline
+ - Low engagement
+ - Risk drivers
+ - Customer-level action lists
+
+
+
 ### 3. Product Usage Analysis
 
 ![Product Usage Analysis](03-usage-analysis.png)
+
+Focuses on:
+
+ - Credits consumed
+ - Credit utilisation
+ - API calls
+ - Workflow activity
+ - Usage trends
+ - Customers exceeding included credits
+ - Potential upgrade opportunities
