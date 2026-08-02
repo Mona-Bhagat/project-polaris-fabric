@@ -4,6 +4,9 @@ The NimbusFlow Power BI report is built on the `SM POL EXECUTIVE`
 semantic model and presents subscription, customer health and product
 usage insights.
 
+<img width="1398" height="467" alt="pipeline-overview" src="https://github.com/user-attachments/assets/a9fdb66f-f6ed-4af3-b7af-9bdc1b7316c2" />
+
+
 ## Report Pages
 
 ### 1. Executive Summary
