@@ -121,7 +121,7 @@ The work progressed through the following stages:
 
 The platform follows a medallion architecture:
 
-<img width="1045" height="496" alt="project-polaris-architecture png" src="https://github.com/user-attachments/assets/401aecd9-7ece-45cc-92a0-1c3d2c2ec14c" />
+<img width="1053" height="500" alt="project-polaris-architecture png" src="https://github.com/user-attachments/assets/4c0faed7-687b-4f85-9ea2-f76d01985d48" />
 
 ## Medallion Architecture
 
