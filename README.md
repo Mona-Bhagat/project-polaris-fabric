@@ -169,7 +169,7 @@ The Direct Lake semantic model supports three connected analytical pages.
 
  - Customer Health and Churn Risk
 
-  <img width="1040" height="575" alt="02-customer-health" src="https://github.com/user-attachments/assets/bd609401-b17f-4d64-9419-221ab18b227f" />
+   <img width="1040" height="575" alt="02-customer-health" src="https://github.com/user-attachments/assets/bd609401-b17f-4d64-9419-221ab18b227f" />
 
 
 
