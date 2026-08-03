@@ -159,9 +159,18 @@ The Direct Lake semantic model supports three connected analytical pages.
 
  - Executive SaaS Performance
 
+   <img width="1047" height="591" alt="01-executive-summary" src="https://github.com/user-attachments/assets/279465cb-de61-4954-8a16-cc214428651c" />
+
+
  - Product Usage Analytics
 
+   <img width="1045" height="580" alt="03-usage-analysis" src="https://github.com/user-attachments/assets/7e40f5b7-aded-4050-aa70-1b8e49a3565b" />
+
+
  - Customer Health and Churn Risk
+
+  <img width="1040" height="575" alt="02-customer-health" src="https://github.com/user-attachments/assets/bd609401-b17f-4d64-9419-221ab18b227f" />
+
 
 
 ## Key Engineering Decisions
