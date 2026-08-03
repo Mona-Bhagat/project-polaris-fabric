@@ -3,7 +3,7 @@
 
 ## Enterprise SaaS Analytics Platform on Microsoft Fabric
 
-Project Polaris is an end-to-end enterprise analytics platform designed and built on Microsoft Fabric for NimbusFlow, a fictional SaaS workflow automation company.
+Project Polaris is an end-to-end enterprise analytics platform designed and built on Microsoft Fabric for Nimbus2000 a fictional SaaS workflow automation company.
 
 The project was structured as a full analytics-platform engagement rather than a standalone dashboard build. It covers solution architecture, synthetic source-system design, data ingestion, medallion-layer transformations, data-quality controls, business modelling, pipeline orchestration, semantic modelling and executive reporting.
 
