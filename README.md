@@ -153,43 +153,6 @@ The Bronze-to-Silver notebook writes operational metrics into notebook slv_data_
 Possible statuses are: PASS, PASS_WITH_WARNINGS, FAIL. The table is append-only, allowing data-quality results to be reviewed across multiple pipeline executions
 
 
-## Key Design Decisions
-
-### One Lakehouse rather than separate Bronze, Silver and Gold Lakehouses
-
-A single Lakehouse was used for the development environment. Raw source extracts are preserved under the Files section, while Silver and Gold outputs are stored as Delta tables.
-
-This reduces unnecessary copying and keeps the platform manageable for the project scale.
-
-### Customer-month as the core analytical grain
-
-Recurring-revenue movement depends on comparing each customer's current and previous monthly state.
-
-The customer-month grain therefore supports:
-
-- MRR bridging
-- Churn analysis
-- Usage trends
-- Customer health
-- Revenue-at-risk reporting
-
-### Transparent health scoring rather than machine learning
-
-The health framework uses explicit rules for no usage, usage decline, low activity and MRR contraction.
-
-This makes the result explainable to business users and avoids presenting synthetic modelling as predictive machine learning.
-
-### Audit logging before dashboard development
-
-Data-quality monitoring was implemented before the reporting layer so that transformation outputs could be validated and tracked over time.
-
-### Churn event separated from inactive state
-
-A customer is classified as `Churned` only in the month where MRR is lost. Later months are classified as `Inactive`.
-
-This prevents historically churned customers from being incorrectly shown as healthy.
-
-
 ## Power BI Reports
 
 The Direct Lake semantic model supports three connected analytical pages.
@@ -201,7 +164,7 @@ The Direct Lake semantic model supports three connected analytical pages.
  - Customer Health and Churn Risk
 
 
-##  Engineering Decisions
+## Key Engineering Decisions
  - Why a Lakehouse?
 
    The Lakehouse supports raw files, scalable Spark transformations and Delta tables within a single Fabric data platform.
